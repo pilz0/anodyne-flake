@@ -56,7 +56,7 @@
         imports = [
           ./modules
         ];
-        _module.args.inputs = inputs;
+        _module.args.anodyneInputs = inputs;
       };
     };
 

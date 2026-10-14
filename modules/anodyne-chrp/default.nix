@@ -1,37 +1,42 @@
 {
- pkgs,
- inputs,
- lib,
- ...
+  pkgs,
+  anodyneInputs,
+  lib,
+  config,
+  ...
 }:
 let
-  anodyne-chrp = inputs.anodyne-chrp.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  system = pkgs.stdenv.hostPlatform.system;
+  anodyne-chrp = anodyneInputs.anodyne-chrp.packages.${system}.default;
+  anodyne-molpic = anodyneInputs.anodyne-molpic.packages.${system}.default;
   cfg = config.anodyne-wiki.chrp;
 in
 {
   options.anodyne-wiki.chrp = {
-      enable = lib.mkEnableOption "";
-      cacheDir = lib.mkOption {
-        type = lib.types.path;
-        default = "/tmp/chrp";
-      };
-      databasePath = lib.mkOption {
-        type = lib.types.str;
-        default = "/var/lib/anodyne/db.sqlite"
-      };
+    enable = lib.mkEnableOption "";
+    cacheDir = lib.mkOption {
+      type = lib.types.path;
+      default = "/tmp/chrp";
     };
-  config = lib.mkIf (anodyne-wiki.enable && config.anodyne-wiki.api.enable) {
-    systemd.services.anodyne-api = {
-      enable = true;
+    databasePath = lib.mkOption {
+      type = lib.types.str;
+      default = "/var/lib/anodyne/db.sqlite";
+    };
+  };
+  config = lib.mkIf (config.anodyne-wiki.enable && cfg.enable) {
+    systemd.services.anodyne-chrp = {
       description = "anodyne wiki scraper";
-      path =  [
-        inputs.anodyne-molpic.packages.${pkgs.stdenv.hostPlatform.system}.default
+      after = [
+        "network-online.target"
+        "anodyne-frontend-sync.service"
       ];
+      wants = [ "network-online.target" ];
+      requires = [ "anodyne-frontend-sync.service" ];
       serviceConfig = {
         User = "anodyne";
         Group = "anodyne";
-        Type = "oneshot"; 
-        ExecStart = "${anodyne-chrp}/bin/chrp --database ${cfg.databasePath} --molpic anodyne-molpic--frontend ${config.anodyne-wiki.frontend.package} --cache=${cfg.cacheDir} --mode=search";
+        Type = "oneshot";
+        ExecStart = "${anodyne-chrp}/bin/chrp --database ${cfg.databasePath} --molpic ${anodyne-molpic}/bin/anodyne-molpic --frontend ${config.anodyne-wiki.frontend.root} --cache=${cfg.cacheDir} --mode=search";
       };
     };
   };
