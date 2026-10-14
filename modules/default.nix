@@ -1,24 +1,30 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 let
   cfg = config.anodyne-wiki;
-in 
+in
 {
   imports = [
     ./caddy
     ./frontend
     ./pkgs
     ./api
+    ./anodyne-chrp
   ];
   options.anodyne-wiki = {
     enable = lib.mkEnableOption "";
   };
-  config = lib.mkIf anodyne-wiki.enable {
-      systemd.tmpfiles.rules = [
+  config = lib.mkIf cfg.enable {
+    users.users.anodyne = {
+      isSystemUser = true;
+      group = "anodyne";
+    };
+    users.groups.anodyne = { };
+
+    systemd.tmpfiles.rules = [
       "d /var/lib/anodyne 0755 anodyne anodyne -"
     ];
   };
