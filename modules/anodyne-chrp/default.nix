@@ -36,7 +36,7 @@ in
         User = "anodyne";
         Group = "anodyne";
         Type = "oneshot";
-        ExecStart = "${anodyne-chrp}/bin/chrp --database ${cfg.databasePath} --molpic ${anodyne-molpic}/bin/anodyne-molpic --frontend ${config.anodyne-wiki.frontend.root} --cache=${cfg.cacheDir} --mode=search";
+        ExecStart = "${anodyne-chrp}/bin/chrp --database ${cfg.databasePath} --molpic ${anodyne-molpic}/bin/anodyne-molpic --frontend ${config.anodyne-wiki.frontend.root} --cache=${cfg.cacheDir} --mode=search --skip dbi-igs";
       };
     };
   };
