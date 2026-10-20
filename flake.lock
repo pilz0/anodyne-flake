@@ -66,11 +66,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1791320255,
-        "narHash": "sha256-FgB2R8M2eE1e31KWqhV03Fj9zIgZwoH0eC2S3GwZCr0=",
+        "lastModified": 1792346751,
+        "narHash": "sha256-tckhgo6hn9jHaLVvFZIMSOdAIOGPEnj5/i9OmtyYn64=",
         "owner": "pilz0",
         "repo": "anodyne-molpic",
-        "rev": "dd65594aa0dcc2c81756a58a438337d2b0127e86",
+        "rev": "3c47f68170f86a754f0d4f6ec278fc83843deee8",
         "type": "github"
       },
       "original": {
@@ -268,11 +268,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1791956154,
-        "narHash": "sha256-jBYGPi4udQ9uo4KQp9m2J0546nJVQitG15gvZSaVVAs=",
+        "lastModified": 1792094642,
+        "narHash": "sha256-zp8ToDMnqZcu4o4IH9pdwXFXGp7yLm/M0dEnNWnyd7I=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "55bfb4d7437bd4e09ab7cba58a43bd68eb310044",
+        "rev": "fe13242281a67641c0102cdb1087f0ebe586c7df",
         "type": "github"
       },
       "original": {

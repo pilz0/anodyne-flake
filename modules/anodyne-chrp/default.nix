@@ -36,7 +36,22 @@ in
         User = "anodyne";
         Group = "anodyne";
         Type = "oneshot";
-        ExecStart = "${anodyne-chrp}/bin/chrp --database ${cfg.databasePath} --molpic ${anodyne-molpic}/bin/anodyne-molpic --frontend ${config.anodyne-wiki.frontend.root} --cache=${cfg.cacheDir} --mode=search --skip dbi-igs";
+        ExecStart = "${anodyne-chrp}/bin/chrp --database ${cfg.databasePath} --molpic ${anodyne-molpic}/bin/molpic --frontend ${config.anodyne-wiki.frontend.root} --cache=${cfg.cacheDir} --mode=search --skip dbi-igs";
+      };
+    };
+    systemd.services.anodyne-chrp-init = {
+      description = "anodyne chrp setup script";
+      after = [
+        "network-online.target"
+        "anodyne-frontend-sync.service"
+      ];
+      wants = [ "network-online.target" ];
+      requires = [ "anodyne-frontend-sync.service" ];
+      serviceConfig = {
+        User = "anodyne";
+        Group = "anodyne";
+        Type = "oneshot";
+        ExecStart = "${anodyne-chrp}/bin/chrp --database ${cfg.databasePath} --molpic ${anodyne-molpic}/bin/molpic --frontend ${config.anodyne-wiki.frontend.root} --cache=${cfg.cacheDir} --mode=init";
       };
     };
   };
