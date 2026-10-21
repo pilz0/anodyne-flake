@@ -12,7 +12,7 @@ in
     ./frontend
     ./pkgs
     ./api
-    ./anodyne-chrp
+    ./chrp
   ];
   options.anodyne-wiki = {
     enable = lib.mkEnableOption "";
