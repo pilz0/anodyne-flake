@@ -27,7 +27,8 @@ Add this to your flake.nix
 ```nix
 inputs.anodyne-flake.url = "github:pilz0/anodyne-flake";
 ```
-Add this to your host config
+* Add this to your host config
+this also set up automatic https
 ```nix
 anodyne-wiki = {
     enable = true;
@@ -41,7 +42,12 @@ anodyne-wiki = {
     };
 };
 ```
-run these services in tmux
+* run these services in tmux 
+once for setup (sets up icons etc)
+```bash
+systemctl start anodyne-chrp-init
+```
+after adding new substances to anodyne-frontend (and once to pull all substance data)
 ```bash
 systemctl start anodyne-chrp
 ```
