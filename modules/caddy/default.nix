@@ -40,7 +40,7 @@ in
           "github.com/mholt/caddy-ratelimit@v0.1.0"
           "github.com/caddyserver/transform-encoder@v0.0.0-20260423033309-ba4124974830"
         ];
-        hash = "sha256-aLboBAd9uSQ9EBM3OGrBe4gUlp/l5lqpMIaaNimGAa8=";
+        hash = "sha256-3QjAm5X+ftxymSdii6ORbmrhd988qj9LCaO6EBv6uAg=";
       };
 
       email = cfg.contactEmail;
