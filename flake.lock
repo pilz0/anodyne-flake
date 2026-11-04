@@ -44,11 +44,11 @@
     "anodyne-frontend": {
       "flake": false,
       "locked": {
-        "lastModified": 1793484715,
-        "narHash": "sha256-nkzhkGFogXfn8We9wTdH9WUu5rR5McgGRRycoadr4zU=",
+        "lastModified": 1793803784,
+        "narHash": "sha256-2sB0JldrWjI93+zibuhdQgtVN/fS4dPOfy+5e6510xQ=",
         "owner": "AnodyneWiki",
         "repo": "anodyne-frontend",
-        "rev": "c2ff5f8045e9033453d266820a48291813104710",
+        "rev": "8f2c51ce4e80d2359d37e0a223fc629a354ca780",
         "type": "github"
       },
       "original": {
@@ -268,11 +268,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1793341285,
-        "narHash": "sha256-Y1CiZ4SoBUjLQyQM/pY+rS2dXD3CHLPstF0lmOc73D4=",
+        "lastModified": 1793726008,
+        "narHash": "sha256-jQp1wKvbwWdLBASTXkSi/VYmDJ5AbBi1WvcMt9HWJC8=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "1c89083e451e891152365b799595cf7790a43325",
+        "rev": "1d060086d60cb76a40cf37109f979d88a5bd6396",
         "type": "github"
       },
       "original": {
